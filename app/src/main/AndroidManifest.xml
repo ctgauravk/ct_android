@@ -5,7 +5,10 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <!-- Recommended so that CleverTap knows when to attempt a network call -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <!-- Include only if your app benefits from precise location access. -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
         android:name=".CTApp"
         android:allowBackup="false"
@@ -29,9 +32,16 @@
         <meta-data
             android:name="CLEVERTAP_ACCOUNT_ID"
             android:value="TEST-RZ7-Z94-K95Z"/>
-         <meta-data
+<!--            android:value="TEST-R95-W5K-R56Z"/>-->
+
+<!--                    android:value="6ZR-965-446Z"/>-->
+
+        <meta-data
             android:name="CLEVERTAP_TOKEN"
             android:value="TEST-4c1-a12"/>
+
+        <!--            android:value="TEST-350-5c2"/>-->
+<!--            android:value="56c-216"/>-->
         <!-- IMPORTANT: To force use Google AD ID to uniquely identify  users, use the following meta tag. GDPR mandates that if you are using this tag, there is prominent disclousure to your end customer in their application. Read more about GDPR here - https://clevertap.com/blog/in-preparation-of-gdpr-compliance/ -->
 <!--        <meta-data-->
 <!--            android:name="CLEVERTAP_USE_GOOGLE_AD_ID"-->
@@ -41,20 +51,6 @@
             android:value="eu1"/>
 
 
-<!--        <service-->
-<!--            android:name="com.clevertap.android.sdk.FcmMessageListenerService"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
-<!--            </intent-filter>-->
-<!--        </service>-->
-        <service
-            android:name="com.clevertap.android.sdk.pushnotification.fcm.FcmMessageListenerService"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
         <service
             android:name=".FcmMessageListenerService"
             android:exported="true">
@@ -62,15 +58,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
-<!--        <service-->
-<!--            android:name="com.clevertap.android.sdk.FcmTokenListenerService"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>-->
-<!--            </intent-filter>-->
-<!--        </service>-->
-
-
     </application>
 
 </manifest>
