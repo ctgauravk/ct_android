@@ -26,6 +26,7 @@ public class ServiceListener extends FirebaseMessagingService {
             if (info.fromCleverTap) {
                 CleverTapAPI.createNotification(getApplicationContext(), extras);
             } else {
+
 // not from CleverTap handle yourself or pass to another provider
             }
         }
