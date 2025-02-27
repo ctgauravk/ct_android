@@ -1,13 +1,5 @@
 package com.clevertap.ctandroid
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentTransaction
-import com.clevertap.android.sdk.CleverTapAPI
-import com.google.gson.Gson
-
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -15,19 +7,27 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
- import android.provider.Settings
- import android.view.View
+import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
+import android.view.View
 import android.widget.Button
- import androidx.core.app.ActivityCompat
+import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.clevertap.android.sdk.CTInboxListener
 import com.clevertap.android.sdk.CTInboxStyleConfig
- import com.google.android.gms.tasks.Task
+import com.clevertap.android.sdk.CleverTapAPI
+import com.google.android.gms.tasks.Task
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.messaging.FirebaseMessaging
- import com.segment.analytics.Analytics
+import com.google.gson.Gson
+import com.segment.analytics.Analytics
 import com.segment.analytics.Properties
-import java.util.*
+import java.util.Calendar
+import java.util.Date
+import java.util.Objects
 
 
 class HomeActivity : AppCompatActivity() , CTInboxListener/*, CTPushNotificationListener*/ {
@@ -41,12 +41,13 @@ class HomeActivity : AppCompatActivity() , CTInboxListener/*, CTPushNotification
     var logout: Button? =null
     private val PERMISSION_NOTIFICATION = 101
 
+
     //    var myWebView: WebView? = null
     var cleverTapDefaultInstance: CleverTapAPI? = null
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_home)
 
         val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
 
@@ -193,7 +194,7 @@ class HomeActivity : AppCompatActivity() , CTInboxListener/*, CTPushNotification
         //        myWebView?.addJavascriptInterface(WebViewInterface(this), "Android")
         //        myWebView?.addJavascriptInterface((),"Android")
 
-        btn1 = findViewById(R.id.button)
+//        btn1 = findViewById(R.id.button)
         btn1?.text = getString(R.string.click)
 
 
@@ -367,23 +368,24 @@ class HomeActivity : AppCompatActivity() , CTInboxListener/*, CTPushNotification
 
     fun login1Click(view: View) {
         val profileUpdate = HashMap<String, Any>()
-        profileUpdate["Name"] = "darwin" // String
-        profileUpdate["Identity"] = "dn1992" // String or number
-        profileUpdate["Email"] = "darwin1992@gmail.com" // Email address of the user
-        profileUpdate["Gender"] = "M" // Can be either M or F
-        val calendar = Calendar.getInstance()
-        calendar.time = Date() // Set your date object here
+//        profileUpdate["Name"] = "darwin" // String
+//        profileUpdate["Identity"] = "dn1992" // String or number
+//        profileUpdate["Email"] = "darwin1992@gmail.com" // Email address of the user
+//        profileUpdate["Gender"] = "M" // Can be either M or F
+//        val calendar = Calendar.getInstance()
+//        calendar.time = Date() // Set your date object here
+//
+//        calendar.set(Calendar.YEAR, 1992)
+//        calendar.set(Calendar.MONTH, Calendar.APRIL)
+//        calendar.set(Calendar.DAY_OF_MONTH, 10)
+//        calendar.time
+//        profileUpdate["DOB"] =
+//            calendar.time
 
-        calendar.set(Calendar.YEAR, 1992)
-        calendar.set(Calendar.MONTH, Calendar.APRIL)
-        calendar.set(Calendar.DAY_OF_MONTH, 10)
-        calendar.time
-        profileUpdate["DOB"] =
-            calendar.time
         cleverTapDefaultInstance?.onUserLogin(profileUpdate)
-
-
-        cleverTapDefaultInstance?.addMultiValueForKey("mystuff", "pants")
+//
+//
+//        cleverTapDefaultInstance?.addMultiValueForKey("mystuff", "pants")
 
 
     }

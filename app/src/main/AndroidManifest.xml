@@ -33,35 +33,71 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <meta-data
-            android:name="CLEVERTAP_NOTIFICATION_ICON"
-            android:value="ic_baseline_account_box_24" />
-        <meta-data
-            android:name="CLEVERTAP_ACCOUNT_ID"
-            android:value="TEST-RZ7-Z94-K95Z"/>
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
 
-<!--                 android:value="6ZR-965-446Z" />
+        <receiver
+            android:name="com.leanplum.LeanplumPushReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.leanplum.LeanplumPushFirebaseMessagingService" />
+            </intent-filter>
+        </receiver>
+
+
+        <service android:name="com.leanplum.LeanplumLocalPushListenerService" />
+
+<!--        <service android:name="com.leanplum.LeanplumPushRegistrationService" />-->
+
+        <service
+            android:name="com.leanplum.LeanplumPushFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!--        <meta-data-->
+<!--            android:name="CLEVERTAP_NOTIFICATION_ICON"-->
+<!--            android:value="ic_remove_small" />-->
+
+<!--        <meta-data-->
+<!--            android:name="CLEVERTAP_ACCOUNT_ID"-->
+
+<!--                    android:value="6ZR-965-446Z" />-->
+        <!--                    android:value="TEST-RZ7-Z94-K95Z"/>-->
+
+<!--
 -->
 
         <!-- android:value="TEST-R95-W5K-R56Z"/> -->
         <!-- android:value="6ZR-965-446Z"/> -->
-        <meta-data
-            android:name="CLEVERTAP_TOKEN"
-            android:value="TEST-4c1-a12"/>
+<!--        <meta-data-->
+<!--            android:name="CLEVERTAP_TOKEN"-->
+
+<!--                android:value="56c-216" />-->
+        <!--                    android:value="TEST-4c1-a12"/>-->
 
         <!-- android:value="56c-216" />  -->
         <!-- android:value="56c-216"/> -->
 <!--        android:value="TEST-56c-4a3"/>-->
 
         <!-- IMPORTANT: To force use Google AD ID to uniquely identify  users, use the following meta tag. GDPR mandates that if you are using this tag, there is prominent disclousure to your end customer in their application. Read more about GDPR here - https://clevertap.com/blog/in-preparation-of-gdpr-compliance/ -->
-        <!-- <meta-data -->
-        <!-- android:name="CLEVERTAP_USE_GOOGLE_AD_ID" -->
-        <!-- android:value="1"/> -->
-        <meta-data
-            android:name="CLEVERTAP_REGION"
-            android:value="eu1" />
+<!--         <meta-data-->
+<!--         android:name="CLEVERTAP_USE_GOOGLE_AD_ID"-->
+<!--         android:value="1"/>-->
+<!--        <meta-data-->
+<!--            android:name="CLEVERTAP_REGION"-->
+<!--            android:value="eu1" />-->
 
+<!--        <service-->
+<!--            android:name="com.clevertap.android.sdk.pushnotification.fcm.FcmMessageListenerService"-->
+<!--            android:exported="true">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.MESSAGING_EVENT"/>-->
+<!--            </intent-filter>-->
+<!--        </service>-->
         <service
             android:name=".FcmMessageListenerService"
             android:exported="true">
